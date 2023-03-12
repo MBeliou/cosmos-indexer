@@ -1,0 +1,28 @@
+[package]
+name = "cosmos-indexer"
+version = "0.1.0"
+edition = "2021"
+
+# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+
+[dependencies]
+cosmrs = { version = "0.11.0", features = ["rpc"] }
+tokio = { version = "1.25.0", features = ["full"] }
+sea-orm = { version = "^0", features = [
+    "sqlx-sqlite",
+    "runtime-tokio-rustls",
+    "macros",
+] }
+cosmos-sdk-proto = "0.16.0"
+thiserror = "1.0.38"
+futures-util = "0.3.26"
+actix-web = "4.3.1"
+paperclip = { version = "0.8.0", features = ["actix4"] }
+serde = { version = "1.0.155", features = ["derive"] }
+dotenvy = "0.15.6"
+clap = { version = "4.1.8", features = ["derive"] }
+
+
+[[bin]]
+path = "src/bin/indexer.rs"
+name = "indexer"
